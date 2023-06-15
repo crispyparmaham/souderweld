@@ -1,0 +1,1 @@
+{"version":3,"sources":["fontend-sass/variables-layout.sass","fontend-sass/main.min.css"],"names":[],"mappings":"AAEA,kCAEI,WAAA,CADA,gBCAJ","file":"main.min.css","sourcesContent":["@import '../_var.sass'\n\n.wp-block-columns , .wp-block-group\n    max-width: 1340px\n    margin: auto",".wp-block-columns, .wp-block-group {\n  max-width: 1340px;\n  margin: auto;\n}"]}

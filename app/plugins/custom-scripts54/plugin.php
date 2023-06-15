@@ -82,7 +82,7 @@ wp_enqueue_style(
 
 	array(),
 
-	'1.0.0'
+	'1.0.1'
 
 );
 	
@@ -115,16 +115,36 @@ wp_enqueue_style(
 };
 
 
-add_action('admin_enqueue_scripts', 'g2p_admin_style');
-function g2p_admin_style()
+add_action('admin_enqueue_scripts', 'souderweld_admin_style');
+add_action('admin_enqueue_scripts', 'souderweld_frontend_style');
+
+function souderweld_admin_style()
 {
     wp_enqueue_style(
-        'backend-g2p-css',
+        'backend-souderweld-css',
         plugin_dir_url(__FILE__) . 'dist/css/backend.min.css',
         array(),
         null
     );
 }
+
+function souderweld_frontend_style()
+{
+    wp_enqueue_style(
+        'frontend-g2p-css',
+        plugin_dir_url(__FILE__) . 'dist/css/main.min.css',
+        array(),
+        null
+    );
+}
+
+add_action( 'after_setup_theme', function() {
+	// Add support for editor styles.
+	add_theme_support( 'editor-styles' );
+	// Enqueue block editor stylesheet.
+	add_editor_style( 'dist/css/backend.min.css' );
+} 
+);
 
 // Add custom image sizes for responsive design
 add_theme_support( 'post-thumbnails' );
