@@ -1,4 +1,18 @@
 @import './var.sass'
 // @import './utils/spacings', './utils/colors', './utils/displays', './utils/flex'
 
+body
+    background: red
+    div
+        color: white
+        width: calc(100vw - #{$t-xs})
+        &:hover, &:focus, &.xy
+            color: green
+            padding: 10px
+            padding-bottom: 20px
+        &:after
+            bottom: 10px
 
+@for $i from 1 through 10
+    .w-#{$i}
+        width: calc(#{$i} * 10%)

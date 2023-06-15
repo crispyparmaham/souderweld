@@ -25,9 +25,6 @@ const gulpEsbuild = createGulpEsbuild({ incremental: false })
 // Define important variables
 const src = './src';
 const dest = './dist';
-const mailDest = './functions/booking/processing/mailing'
-const wpRoot = '../../../'
-const siteName = 'go2places'
 const useTypeScript = false;
 
 // Reload the browser
@@ -42,17 +39,7 @@ const serve = (done) => {
 
 
         baseDir: `${dest}`,
-        proxy: "https://go2places:8890",
-
-        https: {
-            key:
-                '/Applications/MAMP/Library/OpenSSL/certs/' +
-                'go2places.key',
-            cert:
-                '/Applications/MAMP/Library/OpenSSL/certs/' +
-                'go2places.crt',
-        }
-
+        proxy: "http://localhost:8888",
 
     });
     done();
@@ -151,34 +138,6 @@ const script = () => {
         .pipe(gulp.dest(`${dest}/js`));
 };
 
-const scriptBooking = () => {
-    const sourceStream = gulp.src(`${src}/script/booking/booking.js`)
-    return sourceStream
-        .pipe(gulpEsbuild({
-            outfile: 'booking.bundle.js',
-            bundle: true,
-            minify: true,
-            sourcemap: !isProduction(),
-            platform: 'browser'
-        }))
-        .pipe(buffer())
-        .pipe(gulp.dest(`${dest}/js`));
-};
-
-const scriptBookingView = () => {
-    const sourceStream = gulp.src(`${src}/script/booking-view/booking-view.js`)
-    return sourceStream
-        .pipe(gulpEsbuild({
-            outfile: 'booking-view.bundle.js',
-            bundle: true,
-            minify: true,
-            sourcemap: !isProduction(),
-            platform: 'browser'
-        }))
-        .pipe(buffer())
-        .pipe(gulp.dest(`${dest}/js`));
-};
-
 // Copy assets
 const assets = () => {
     return gulp.src(`${src}/assets/**`)
@@ -200,14 +159,12 @@ const watch = () => gulp.watch(
         css,
         backendCss,
         script,
-        scriptBooking,
-        scriptBookingView,
         html,
         reload
     ));
 
 // Development tasks
-const dev = gulp.task('dev', gulp.series(gulp.parallel(assets, css, backendCss, script, scriptBooking, scriptBookingView, html), serve, watch));
+const dev = gulp.task('dev', gulp.series(gulp.parallel(assets, css, backendCss, script, html), serve, watch));
 
 // Build tasks
 const build = gulp.task('build',
@@ -217,8 +174,6 @@ const build = gulp.task('build',
         css,
         backendCss,
         script,
-        scriptBooking,
-        scriptBookingView
     ));
 
 // Default function (used when type "gulp")

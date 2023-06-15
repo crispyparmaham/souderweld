@@ -58,6 +58,33 @@ wp_enqueue_style(
  );
  
  */
+
+wp_enqueue_script(
+
+	'main-js',
+
+	plugin_dir_url(__FILE__) . 'dist/js/main.bundle.js',
+
+	array('gsap-main', 'gsap-scrolltrigger', 'gsap-scrollto'),
+
+	'1.0.0',
+
+	true
+
+);
+
+
+wp_enqueue_style(
+
+	'main-g2p-css',
+
+	plugin_dir_url(__FILE__) . 'dist/css/main.min.css',
+
+	array(),
+
+	'1.0.0'
+
+);
 	
  /*GSAP GREENSOCK ANIMATIONS*/
  	wp_enqueue_script(
@@ -87,6 +114,17 @@ wp_enqueue_style(
 	);		
 };
 
+
+add_action('admin_enqueue_scripts', 'g2p_admin_style');
+function g2p_admin_style()
+{
+    wp_enqueue_style(
+        'backend-g2p-css',
+        plugin_dir_url(__FILE__) . 'dist/css/backend.min.css',
+        array(),
+        null
+    );
+}
 
 // Add custom image sizes for responsive design
 add_theme_support( 'post-thumbnails' );

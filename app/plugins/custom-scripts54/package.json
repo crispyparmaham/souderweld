@@ -1,7 +1,7 @@
 {
-  "name": "go2places-dev-environment",
+  "name": "souderweld",
   "version": "1.0.0",
-  "description": "Agentur 54 - Dev Environment for Go2Places",
+  "description": "Agentur 54 - Dev Environment for Souderweld",
   "main": "index.js",
   "scripts": {
     "dev": "gulp dev",

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/script/main.js"],
+  "sourcesContent": ["\"use strict\"\n\n// import { initFaqTogglePanels } from \"./misc/faq-toggle-panel\";\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n\n\n\n\n})\n\n\n\n\n"],
+  "mappings": "mBAGA,SAAS,iBAAiB,mBAAoB,IAAM,CAKpD,CAAC",
+  "names": []
+}
