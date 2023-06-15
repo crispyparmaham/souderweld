@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Monument Extended Ultrabold";
+  src: url("../fonts/MonumentExtended-Ultrabold.woff") format("woff"),
+}
+
+
+/* manrope-regular - latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/manrope-v3-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../fonts/manrope-v3-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/manrope-v3-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/manrope-v3-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/manrope-v3-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/manrope-v3-latin-regular.svg#Manrope') format('svg'); /* Legacy iOS */
+}
