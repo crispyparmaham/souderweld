@@ -3,6 +3,23 @@
 
 // @import './utils/spacings', './utils/colors', './utils/displays', './utils/flex'
 
-@for $i from 1 through 10
-    .w-#{$i}
-        width: calc(#{$i} * 10%)
+p
+    font: $text-font
+    color: $text
+
+h2.wp-block-heading 
+    font: $text-font
+    color: $text
+
+.hmax
+    text-transform: uppercase
+    font-weight: 800
+    .last-word
+        color: $beige-80
+        display: table
+
+.inner-max-width
+    margin: auto
+    width: 100%
+    max-width: 1330px
+

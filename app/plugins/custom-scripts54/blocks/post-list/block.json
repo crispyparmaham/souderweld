@@ -1,0 +1,14 @@
+{
+    "name": "beitragsliste",
+    "title": "Beitragsliste",
+    "description": "Alle Beiträge eines Custom Post Types",
+    "style": ["file:./post-list.css"],
+    "category": "formatting",
+    "icon": "universal-access-alt",
+    "keywords": ["liste", "aufzählung", "links", "custom", "souderweld"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "post-list.php"
+    },
+    "align": "full"
+}

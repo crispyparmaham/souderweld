@@ -1,0 +1,14 @@
+{
+    "name": "header-section",
+    "title": "Header Section",
+    "description": "Text und Bild für den Seiteneinstieg",
+    "style": ["file:./header-section.css"],
+    "category": "formatting",
+    "icon": "grid-view",
+    "keywords": ["header", "anfang", "section", "custom", "souderweld"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "header-section.php"
+    },
+    "align": "full"
+}

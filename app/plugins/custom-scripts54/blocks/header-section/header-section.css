@@ -1,0 +1,72 @@
+:root {
+    --headerHeight: 100px;
+}
+
+.header-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    margin: auto;
+    position: relative;
+    height: calc(100vh - (var(--headerHeight) * 2));
+    /**width: calc(100vw - var(--headerHeight));**/
+}
+
+.header-section:before {
+    content: "";
+    height: calc(100vh - (var(--headerHeight) * 2));
+    width: calc(100vw - var(--headerHeight));
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: #121D22;
+    z-index: -1;
+}
+
+.header-section:after {
+    content: "";
+    width: 100vw;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    background-color: white;
+    z-index: 3;
+}
+
+.header-section .image {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+    height: calc(100% - 2px);
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.header-section img {
+    opacity: .7;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+}
+
+.header-section .image:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50%;
+    height: 100%;
+    z-index: 3;
+    background: linear-gradient(0.25turn, rgba(18, 29, 34, 1), rgba(18, 29, 34, 0));
+}
+
+.header-section .text-wrapper {
+    width: 50%;
+    color: white;
+}
