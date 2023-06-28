@@ -120,21 +120,7 @@ function custom_enqueue_files()
 add_action('admin_enqueue_scripts', 'enqueue_backend_files');
 function enqueue_backend_files()
 {
-    wp_enqueue_style(
-        'fonts-main',
-        plugin_dir_url(__FILE__) . '/assets/css/fonts.css',
-        array(),
-        '2.3.4'
-    );
-
-    wp_enqueue_style(
-        'frontend-souderweld-css',
-        plugin_dir_url(__FILE__) . 'dist/css/main.min.css',
-        array(),
-        null
-    );
-
-    wp_enqueue_style(
+   wp_enqueue_style(
         'backend-souderweld-css',
         plugin_dir_url(__FILE__) . 'dist/css/backend.min.css',
         array(),
