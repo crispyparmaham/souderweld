@@ -22,103 +22,102 @@ You should have received a copy of the GNU General Public License
 along with This plugin. If not, see {URI to Plugin License}.
 */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	die;
+if (!defined('ABSPATH')) {
+    die;
 }
 
-add_action( 'wp_enqueue_scripts', 'custom_enqueue_files' );
+add_action('wp_enqueue_scripts', 'custom_enqueue_files');
 /**
  * Loads <list assets here>.
  */
-function custom_enqueue_files() {
-	wp_enqueue_style(
-    'fonts-main',
-    plugin_dir_url( __FILE__ ) . '/assets/css/fonts.css',
-    array(),
-    '2.3.4'
-);
-//SWIPER SLIDER
-// Version 8.1.4 is loaded
+function custom_enqueue_files()
+{
+    wp_enqueue_style(
+        'fonts-main',
+        plugin_dir_url(__FILE__) . '/assets/css/fonts.css',
+        array(),
+        '2.3.4'
+    );
 
-/*
-wp_enqueue_style(
-    'swiper-js-css',
-    plugin_dir_url( __FILE__ ) . '/assets/css/swiper-bundle.min.css',
-    array(),
-    '8.1.4'
-);	
+    wp_enqueue_style(
+        'swiper-js-css',
+        plugin_dir_url(__FILE__) . '/assets/css/swiper-bundle.min.css',
+        array(),
+        '8.1.4'
+    );
 
+    wp_enqueue_script(
+        'swiper-js',
+        plugin_dir_url(__FILE__) . 'assets/js/swiper-bundle.min.js',
+        array(),
+        '8.1.4',
+        true
+    );
 
- wp_enqueue_script(
-     'swiper-js',
-     plugin_dir_url( __FILE__ ) . 'assets/js/swiper-bundle.min.js',
-     array(),
-     '8.1.4',
-    true
- );
- 
- */
-
-wp_enqueue_script(
-
-	'main-js',
-
-	plugin_dir_url(__FILE__) . 'dist/js/main.bundle.js',
-
-	array('gsap-main', 'gsap-scrolltrigger', 'gsap-scrollto'),
-
-	'1.0.0',
-
-	true
-
-);
+    wp_enqueue_style(
+        'frontend-souderweld-css',
+        plugin_dir_url(__FILE__) . 'dist/css/main.min.css',
+        array(),
+        null
+    );
 
 
-wp_enqueue_style(
+    wp_enqueue_script(
+        'split-js',
+        plugin_dir_url(__FILE__) . 'src/script/split-ends.js',
+        array(),
+        '1.0.0',
+        true
+    );
 
-	'main-g2p-css',
+    wp_enqueue_script(
+        'custom-menu-js',
+        plugin_dir_url(__FILE__) . 'src/script/custom-menu.js',
+        array(),
+        '1.0.0',
+        true
+    );
 
-	plugin_dir_url(__FILE__) . 'dist/css/main.min.css',
-
-	array(),
-
-	'1.0.1'
-
-);
-	
- /*GSAP GREENSOCK ANIMATIONS*/
- 	wp_enqueue_script(
-     'gsap-main',
-     plugin_dir_url( __FILE__ ) . 'assets/js/gsap.min.js',
-     array(),
-     '1.0.0',
-		true
- );
-	
- /*Custom Scripts*/
- 	wp_enqueue_script(
-     'custom-js',
-     plugin_dir_url( __FILE__ ) . 'assets/js/custom.js',
-     array(),
-     '1.0.0',
-		true
- );
-	
-/*54 Masterpiece Console Message*/
-	wp_enqueue_script(
-		'fiftyfour-masterpiece-console',
-	   plugin_dir_url( __FILE__ ) . 'assets/js/fiftyfourmasterpiece.min.js',
-		array(),
-		'1.0.0',
-		true
-	);		
-};
+    wp_enqueue_script(
+        'main-js',
+        plugin_dir_url(__FILE__) . 'dist/js/main.bundle.js',
+        array('gsap-main', 'gsap-scrolltrigger', 'gsap-scrollto'),
+        '1.0.0',
+        true
+    );
 
 
-add_action('admin_enqueue_scripts', 'souderweld_admin_style');
-add_action('admin_enqueue_scripts', 'souderweld_frontend_style');
 
-function souderweld_admin_style()
+    /*GSAP GREENSOCK ANIMATIONS*/
+    wp_enqueue_script(
+        'gsap-main',
+        plugin_dir_url(__FILE__) . 'assets/js/gsap.min.js',
+        array(),
+        '1.0.0',
+        true
+    );
+
+    /*Custom Scripts*/
+    wp_enqueue_script(
+        'custom-js',
+        plugin_dir_url(__FILE__) . 'assets/js/custom.js',
+        array(),
+        '1.0.0',
+        true
+    );
+
+    /*54 Masterpiece Console Message*/
+    wp_enqueue_script(
+        'fiftyfour-masterpiece-console',
+        plugin_dir_url(__FILE__) . 'assets/js/fiftyfourmasterpiece.min.js',
+        array(),
+        '1.0.0',
+        true
+    );
+}
+
+add_action('admin_enqueue_scripts', 'enqueue_backend_files');
+function enqueue_backend_files()
 {
     wp_enqueue_style(
         'backend-souderweld-css',
@@ -128,48 +127,48 @@ function souderweld_admin_style()
     );
 }
 
-function souderweld_frontend_style()
+
+
+add_action('init', 'register_blocks');
+function register_blocks()
 {
-    wp_enqueue_style(
-        'frontend-g2p-css',
-        plugin_dir_url(__FILE__) . 'dist/css/main.min.css',
-        array(),
-        null
-    );
+    register_block_type(__DIR__ . '/blocks/post-list');
+    register_block_type(__DIR__ . '/blocks/header-section');
 }
 
-add_action( 'after_setup_theme', function() {
-	// Add support for editor styles.
-	add_theme_support( 'editor-styles' );
-	// Enqueue block editor stylesheet.
-	add_editor_style( 'dist/css/backend.min.css' );
-} 
-);
+add_filter('allowed_http_origins', 'add_allowed_origins');
+
+function add_allowed_origins($origins)
+{
+    $origins[] = 'https://www.yourdomain.com';
+    return $origins;
+}
 
 // Add custom image sizes for responsive design
-add_theme_support( 'post-thumbnails' );
-add_image_size( 'img-480', 480, 9999 );
-add_image_size( 'img-640', 640, 9999 );
-add_image_size( 'img-720', 720, 9999 );
-add_image_size( 'img-960', 960, 9999 );
-add_image_size( 'img-1168', 1168, 9999 );
-add_image_size( 'img-1440', 1440, 9999 );
-add_image_size( 'img-1920', 1920, 9999 );
+add_theme_support('post-thumbnails');
+add_image_size('img-480', 480, 9999);
+add_image_size('img-640', 640, 9999);
+add_image_size('img-720', 720, 9999);
+add_image_size('img-960', 960, 9999);
+add_image_size('img-1168', 1168, 9999);
+add_image_size('img-1440', 1440, 9999);
+add_image_size('img-1920', 1920, 9999);
 
 // allow gutenberg editor to read our custom image sizes
 
-function my_custom_sizes( $sizes ) {
-	return array_merge( $sizes, array(
-		'img-480' => 'img-480',
-		'img-640' => 'img-640',
-		'img-720' => 'img-720',
-		'img-960' => 'img-960',
-		'img-1168' => 'img-1168',
-		'img-1440' => 'img-1440',
-		'img-1920' => 'img-1920',
-	) );
+function my_custom_sizes($sizes)
+{
+    return array_merge($sizes, array(
+        'img-480' => 'img-480',
+        'img-640' => 'img-640',
+        'img-720' => 'img-720',
+        'img-960' => 'img-960',
+        'img-1168' => 'img-1168',
+        'img-1440' => 'img-1440',
+        'img-1920' => 'img-1920',
+    ));
 }
-add_filter( 'image_size_names_choose', 'my_custom_sizes' );
+add_filter('image_size_names_choose', 'my_custom_sizes');
 
 
 // SRCSET IMAGES
@@ -181,24 +180,28 @@ add_filter( 'image_size_names_choose', 'my_custom_sizes' );
  * @param string $image_size the size of the thumbnail image or custom image size
  * @param string $max_width the max width this image will be shown to build the sizes attribute 
  */
-function responsive_image($image_id,$image_size,$max_width){
+function responsive_image($image_id, $image_size, $max_width)
+{
 
-	// check the image ID is not blank
-	if($image_id != '') {
+    // check the image ID is not blank
+    if ($image_id != '') {
 
-		// set the default src image size
-		$image_src = wp_get_attachment_image_url( $image_id, $image_size );
+        // set the default src image size
+        $image_src = wp_get_attachment_image_url($image_id, $image_size);
 
-		// set the srcset with various image sizes
-		$image_srcset = wp_get_attachment_image_srcset( $image_id, $image_size );
+        // set the srcset with various image sizes
+        $image_srcset = wp_get_attachment_image_srcset($image_id, $image_size);
 
-		// generate the markup for the responsive image
-		echo 'src="'.$image_src.'" srcset="'.$image_srcset.'" sizes="(max-width: '.$max_width.') 100vw, '.$max_width.'"';
+        // generate the markup for the responsive image
+        echo 'src="' . $image_src . '" srcset="' . $image_srcset . '" sizes="(max-width: ' . $max_width . ') 100vw, ' . $max_width . '"';
 
-	}
+    }
 }
 
 
 
 // Include other PHP Functions, to use on the page
-include(plugin_dir_path( __FILE__ ) . 'functions/general-functions.php');
+include(plugin_dir_path(__FILE__) . 'functions/general-functions.php');
+include(plugin_dir_path(__FILE__) . 'functions/colors-in-gutenberg.php');
+
+add_filter('show_admin_bar', '__return_false');

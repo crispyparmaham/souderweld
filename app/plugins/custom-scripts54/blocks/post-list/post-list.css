@@ -1,0 +1,9 @@
+.menu-list {
+    padding: 1.5rem;
+    border-bottom: 1px solid #7C809E;
+}
+
+.menu-list:hover {
+    background: var(--blue-violet-gradient);
+    cursor: pointer;
+}
