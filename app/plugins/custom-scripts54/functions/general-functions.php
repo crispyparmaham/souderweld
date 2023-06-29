@@ -126,7 +126,7 @@ function add_overlay_element() {
 
 //Menü Einträge automatisch hinzufügen
 
-/** $custom_post_types = array(
+ $custom_post_types = array(
 	'wissen' => array(
 		'class_name' => 'wissen-menu',
 		'post_name' => 'wissen'
@@ -137,32 +137,61 @@ function add_overlay_element() {
 	)
 );
 
-add_filter( 'wp_get_nav_menu_items', 'nested_menu_filter',10, 3 );
+// add_filter( 'wp_get_nav_menu_items', 'nested_menu_filter',10, 3 );
 
-function nested_menu_filter($items, $menu, $args) {
-	global $custom_post_types;
-	foreach ($custom_post_types as $post_type) {
-		$post_name = $post_type['post_name'];
-		$class_name = $post_type['class_name'];
-		nested_menu_filter_items($items, $menu, $args,  $post_name, $class_name);
-	}
-}
+// function nested_menu_filter($items, $menu, $args) {
+// 	global $custom_post_types;
+// 	foreach ($custom_post_types as $post_type) {
+// 		$post_name = $post_type['post_name'];
+// 		$class_name = $post_type['class_name'];
+// 		nested_menu_filter_items($items, $menu, $args,  $post_name, $class_name);
+// 	}
+// }
 
-function nested_menu_filter_items($items, $menu, $args,  $post_name, $class_name) {
-	$child_items = array(); 
-	$menu_order = count($items); 
-	$parent_item_id = 0; 
 
-	foreach ( $items as $item ) {
-		if ( in_array($class_name, $item->classes) ){
-			$parent_item_id = $item->ID;
-		}
-	}
+// add_filter( 'wp_get_nav_menu_items', 'nested_menu_filter_items',10, 3 );
 
-	if($parent_item_id > 0){
+// function nested_menu_filter_items($items, $menu, $args,  $post_name, $class_name) {
+// 	$child_items = array(); 
+// 	$menu_order = count($items); 
+// 	$parent_item_id = 0; 
 
-		foreach (get_posts( 'post_type=' . $post_name . 'numberposts=-1' ) as $post) {
-			$post->menu_item_parent = $parent_item_id;
+// 	foreach ( $items as $item ) {
+// 		if ( in_array($class_name, $item->classes) ){
+// 			$parent_item_id = $item->ID;
+// 		}
+// 	}
+
+// 	if($parent_item_id > 0){
+
+// 		foreach (get_posts( 'post_type=' . $post_name . 'numberposts=-1' ) as $post) {
+// 			$post->menu_item_parent = $parent_item_id;
+// 			$post->post_type = 'nav_menu_item';
+// 			$post->object = 'custom';
+// 			$post->type = 'custom';
+// 			$post->menu_order = ++$menu_order;
+// 			$post->title = $post->post_title;
+// 			$post->url = get_permalink( $post->ID );
+// 			array_push($child_items, $post);
+// 		}
+// 	}
+// 	return array_merge( $items, $child_items );
+// }
+
+
+add_filter( 'wp_get_nav_menu_items', 'custom_submenus_menu_filter',10, 3 );
+
+function custom_submenus_menu_filter( $items, $menu, $args ) {
+  $child_items = array(); 
+  $menu_order = count($items); 
+  $parent_item_id = 0; 
+  
+  foreach ( $items as $item ) {
+
+	$customSubMenu = get_field('custom_sub_menu', $item->ID);
+	if($customSubMenu && $customSubMenu != 'none'){
+		foreach ( get_posts( 'post_type=' . $customSubMenu .'&numberposts=-1' ) as $post ) {
+			$post->menu_item_parent = $item->ID;
 			$post->post_type = 'nav_menu_item';
 			$post->object = 'custom';
 			$post->type = 'custom';
@@ -170,9 +199,13 @@ function nested_menu_filter_items($items, $menu, $args,  $post_name, $class_name
 			$post->title = $post->post_title;
 			$post->url = get_permalink( $post->ID );
 			array_push($child_items, $post);
-		}
+		  }
+	
 	}
-	return array_merge( $items, $child_items );
-} **/
+  }
+
+  return array_merge( $items, $child_items );
+}
+
 
 ?>
