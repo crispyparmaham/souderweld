@@ -1,0 +1,19 @@
+{
+    "name": "geschichte",
+    "title": "Geschichte",
+    "description": "Zeitstrahl der Geschichte von Souderweld",
+    "script": "file:./script.js",
+    "viewScript": ["file:./script.js", "geschichte-view-script"],
+    "selectors": {
+        "root": ".geschichte-block"
+    },
+    "style": ["file:./geschichte.sass"],
+    "category": "formatting",
+    "icon": "grid-view",
+    "keywords": ["header", "anfang", "section", "custom", "souderweld", "geschichte", "zeitstrahl"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "./geschichte.php"
+    },
+    "align": "full"
+}

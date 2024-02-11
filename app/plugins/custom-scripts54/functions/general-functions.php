@@ -55,6 +55,10 @@ class Walker_Sub_Menu_Pointers extends Walker_Nav_Menu {
 		$output .= '</li>'; // Close the li tag
 
 	}
+	/**
+	 */
+	function __construct() {
+	}
 }
 
 // Funktion fürs Hauptmenü

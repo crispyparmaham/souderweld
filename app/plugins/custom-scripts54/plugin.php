@@ -1,26 +1,11 @@
 <?php
-/*
-Plugin Name:	Custom Scripts 54
-Description:	Eigene Scripte und Stylesheets einbinden
-Version:		2.0.1
-Author:			Matthias Marx | Agentur 54
-Author URI:		https://www.agentur54.de
-License:		GPL-2.0+
-License URI:	http://www.gnu.org/licenses/gpl-2.0.txt
-
-This plugin is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
-any later version.
-
-This plugin is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with This plugin. If not, see {URI to Plugin License}.
-*/
+/* Plugin Name:	Custom Scripts 54 Description:	Eigene Scripte und Stylesheets einbinden Version:		2.0.1 Author:			Matthias Marx | Agentur 54 Author URI:		https://www.agentur54.de License:		GPL-2.0+ License URI:	http://www.gnu.org/licenses/gpl-2.0.txt
+ 
+This plugin is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or any later version.
+ 
+This plugin is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ 
+You should have received a copy of the GNU General Public License along with This plugin. If not, see {URI to Plugin License}. */
 
 if (!defined('ABSPATH')) {
     die;
@@ -32,6 +17,30 @@ add_action('wp_enqueue_scripts', 'custom_enqueue_files');
  */
 function custom_enqueue_files()
 {
+
+    wp_enqueue_style(
+        'lightgallery-css',
+        plugin_dir_url(__FILE__) . '/assets/css/lightgallery-bundle.min.css',
+        array(),
+        '2.3.4'
+    );
+
+    wp_enqueue_script(
+        'lightgallery-js',
+        plugin_dir_url(__FILE__) . '/assets/js/lightgallery.min.js',
+        array(),
+        '2.3.4',
+        true
+    );
+
+    wp_enqueue_script(
+        'lightgallery-thumbnail',
+        plugin_dir_url(__FILE__) . '/assets/js/lg-thumbnail.min.js',
+        array(),
+        '1.0.0',
+        true
+    );
+
     wp_enqueue_style(
         'fonts-main',
         plugin_dir_url(__FILE__) . '/assets/css/fonts.css',
@@ -91,7 +100,7 @@ function custom_enqueue_files()
     /*GSAP GREENSOCK ANIMATIONS*/
     wp_enqueue_script(
         'gsap-main',
-        plugin_dir_url(__FILE__) . 'assets/js/gsap.min.js',
+        plugin_dir_url(__FILE__) . '/assets/js/gsap.min.js',
         array(),
         '1.0.0',
         true
@@ -100,11 +109,31 @@ function custom_enqueue_files()
     /*Custom Scripts*/
     wp_enqueue_script(
         'custom-js',
-        plugin_dir_url(__FILE__) . 'assets/js/custom.js',
+        plugin_dir_url(__FILE__) . '/assets/js/custom.js',
         array(),
         '1.0.0',
         true
     );
+
+    //Hier werden die .js Dateien aus den custom blocks geladen -> vllt findet jemand heraus, wie man die richtig aus der .json lädt
+
+    wp_enqueue_script(
+        'mitarbeiter-block-js',
+        plugin_dir_url(__FILE__) . '/blocks/mitarbeiter/script.js',
+        array(),
+        '1.0.0',
+        true
+    );
+
+    wp_enqueue_script(
+        'geschichte-block-js',
+        plugin_dir_url(__FILE__) . '/blocks/geschichte/script.js',
+        array(),
+        '1.0.0',
+        true
+    );
+
+
 
     /*54 Masterpiece Console Message*/
     wp_enqueue_script(
@@ -120,13 +149,14 @@ function custom_enqueue_files()
 add_action('admin_enqueue_scripts', 'enqueue_backend_files');
 function enqueue_backend_files()
 {
-   wp_enqueue_style(
+    wp_enqueue_style(
         'backend-souderweld-css',
         plugin_dir_url(__FILE__) . 'dist/css/backend.min.css',
         array(),
         null
     );
 }
+
 add_action('enqueue_block_editor_assets', 'enqueue_gutenberg_assets_files');
 function enqueue_gutenberg_assets_files()
 {
@@ -150,14 +180,82 @@ function enqueue_gutenberg_assets_files()
         array(),
         null
     );
+
+    wp_enqueue_style(
+        'ff-editor-style',
+        plugin_dir_url(__FILE__) . '/assets/css/style-index.css',
+        array(),
+        microtime()
+    );
+
+    wp_enqueue_script(
+        'ff-editor-script',
+        plugin_dir_url(__FILE__) . '/assets/js/editor.js',
+        array(),
+        microtime(),
+        true
+    );
 }
 
+
+/** Farbpaleten anpassen */
+
+function disable_color_palette()
+{
+    add_theme_support('editor-color-palette');
+    add_theme_support('disable-custom-colors');
+}
+add_action('after_setup_theme', 'disable_color_palette');
+
+function customize_color_palette()
+{
+    add_theme_support('editor-color-palette', array(
+            array(
+            'name' => __('Petrol'),
+            'slug' => 'petrol',
+            'color' => '#0094A0',
+        ),
+            array(
+            'name' => __('Red'),
+            'slug' => 'red',
+            'color' => '#E2574C',
+        ),
+            array(
+            'name' => __('Black'),
+            'slug' => 'black',
+            'color' => '#000000',
+        ),
+    ));
+}
+add_action('after_setup_theme', 'customize_color_palette');
+
+function theme_custom_gradients()
+{
+    add_theme_support('editor-gradient-presets', array(
+            array(
+            'name' => __('Semitransparent Blau zu Violett', 'souderweld'),
+            'gradient' => 'linear-gradient(90deg, rgba(130, 203, 230, .4) 0, rgba(124, 128, 159, .4) 100%)',
+            'slug' => 'semitransparent-blue-to-violet'
+        ),
+            array(
+            'name' => __('Semitransparent Violett zu Blau', 'souderweld'),
+            'gradient' => 'linear-gradient(90deg, rgba(124, 128, 159, .4) 0, rgba(130, 203, 230, .4) 100%)',
+            'slug' => 'semitransparent-violet-to-blue'
+        ),
+    ));
+}
+
+add_action('after_setup_theme', 'theme_custom_gradients');
+
+/** Farpaletten anpassen ENDE */
 
 add_action('init', 'register_blocks');
 function register_blocks()
 {
     register_block_type(__DIR__ . '/blocks/post-list');
     register_block_type(__DIR__ . '/blocks/header-section');
+    register_block_type(__DIR__ . '/blocks/mitarbeiter');
+    register_block_type(__DIR__ . '/blocks/geschichte');
 }
 
 add_filter('allowed_http_origins', 'add_allowed_origins');

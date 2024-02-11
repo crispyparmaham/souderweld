@@ -1,0 +1,117 @@
+.wp-block-columns.fake-grid-wrapper
+    display: flex
+    flex-wrap: wrap
+    gap: 2em
+    margin-bottom: 2em
+
+    &.last-element
+        margin-bottom: 100px
+
+    .wp-block-column
+        display: flex
+        padding: 0.5em
+        width: 100%
+        gap: unset
+
+        .wp-block-group
+            display: flex
+            flex-direction: column
+            align-items: stretch
+            justify-content: stretch
+            height: 100%
+
+            .wp-block-group__inner-container
+                display: flex
+                flex-direction: column
+                //justify-content: space-between
+                height: 100%
+
+                p:first-of-type
+                    flex: 1 1 auto
+
+.mitarbeiter
+    width: 100%
+    display: flex
+    gap: .5em
+
+    .teammitglied
+        display: flex
+        width: 100%
+        flex-direction: column
+        position: relative
+        box-shadow: 0 0 5px 5px $shadow
+
+        .button-certificate
+            position: absolute
+            top: 1rem
+            right: 1rem
+            width: 20px
+            height: 20px
+            z-index: 99
+            color: $text
+            display: flex
+            align-items: center
+            justify-content: center
+
+            &:hover
+                cursor: pointer
+
+            img
+                height: var(--certificateButtonHeight)
+                width: var(--certificateButtonWidth)
+                object-fit: contain
+                position: absolute
+                right: 1rem
+                top: 1rem
+                z-index: -1
+                transform: translate(50%, -50%)
+
+            span
+                transform: translate(5%, 7%)
+
+        .bild-team
+            display: flex
+            width: 100%
+            flex: 1 0 auto
+
+            img
+                border-style: none
+                display: block
+                width: 100%
+                object-fit: cover
+
+        .teammitglied-text-wrapper
+            display: flex
+            padding: 1.5em 1.5em
+            align-items: flex-start
+            background-image: var(--violet-blue-gradient)
+            justify-content: space-between
+            letter-spacing: 1px
+
+            h3
+                // text-transform: uppercase
+
+            h4
+                color: $primary
+                font-weight: $text-fontweight-regular
+                font-size: $t-s
+                margin-bottom: 0 !important
+
+        .buttons-team
+            display: flex
+            gap: 10px
+
+            .contact-button
+                background-image: var(--blue-violet-gradient)
+                width: 40px
+                height: 40px
+                display: flex
+                border-radius: 30px
+                justify-content: center
+                align-items: center
+
+                &:hover
+                    cursor: pointer
+
+.gallery-wrapper
+    display: none

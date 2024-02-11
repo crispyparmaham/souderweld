@@ -1,0 +1,30 @@
+.wp-block-button__link {
+    background-color: lightcoral;
+    color: white;
+    text-transform: uppercase;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    border-radius: 8px;
+    border: 2px solid lightcoral;
+    transition: all 0.3s ease;
+}
+
+.wp-block-button__link:hover {
+    background-color: white;
+    color: lightcoral
+}
+
+.is-style-secondary-button .wp-block-button__link {
+    background-color: transparent;
+    border: none;
+    color: white;
+    position: relative;
+}
+
+.is-style-secondary-button .wp-block-button__link:before {
+    content: "";
+    width: 150px;
+    height: auto;
+    background-image: url('../app/plugins/custom-scripts54/dist/assets/icons/souderweld-long-arrow.svg');
+}

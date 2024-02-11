@@ -1,15 +1,47 @@
 @import './var.sass'
 @import './fontend-sass/variables-layout'
+@import '../../blocks/post-list/post-list.sass'
+@import '../../blocks/header-section/header-section.sass'
+@import '../../blocks/mitarbeiter/mitarbeiter.sass'
+@import '../../blocks/geschichte/geschichte.sass'
 
 // @import './utils/spacings', './utils/colors', './utils/displays', './utils/flex'
+
+figure.wp-block-image
+    margin: 0 !important
+    margin-block-start: 0em
+    margin-block-end: 0em
+    margin-inline-start: 0px
+    margin-inline-end: 0px
+
+    img
+        width: 100%
+        max-height: 80vh
+        object-fit: cover
+
+.wp-block-columns
+    gap: 5em
+    margin-bottom: 100px
 
 p
     font: $text-font
     color: $text
+    font-weight: 400
 
-h2.wp-block-heading 
+h1, h2, h3, h4, h5, h6
     font: $text-font
     color: $text
+    line-height: 1.25
+    margin-bottom: 1.25rem !important
+    text-transform: uppercase
+
+    &.wp-block-heading
+        font: $text-font
+        color: $text
+
+a
+    color: $primary
+    font-weight: $text-fontweight-bold
 
 .hmax
     text-transform: uppercase
@@ -21,5 +53,78 @@ h2.wp-block-heading
 .inner-max-width
     margin: auto
     width: 100%
-    max-width: 1330px
+    max-width: 1340px
 
+.wp-block-group
+    padding: 1.5rem
+    background: var(--blue-violet-gradient)
+
+.has-semitransparent-blue-to-violet-gradient-background
+    background: linear-gradient(90deg, rgba(130, 203, 230, .4) 0, rgba(124, 128, 159, .4) 100%)
+
+.has-semitransparent-blue-to-violet-gradient-background
+    background: linear-gradient(90deg, rgba(130, 203, 230, .4) 0, rgba(124, 128, 159, .4) 100%)
+    padding: 30px
+
+    &.wp-element-button
+        padding: 10px 55px 10px 25px
+        position: relative
+
+.has-semitransparent-violet-to-blue-gradient-background
+    background: linear-gradient(90deg, rgba(124, 128, 159, .4) 0, rgba(130, 203, 230, .4) 100%)
+    padding: 30px
+
+    &.wp-element-button
+        padding: 10px 55px 10px 25px
+        position: relative
+
+a.wp-element-button
+    color: white
+    font-size: 1.4rem
+    text-transform: uppercase
+    letter-spacing: 2px
+
+/** a.wp-element-button:after
+ content: ""
+ width: 15px
+ height: 15px
+ background: url("/app/uploads/2023/06/arrow-small-1.svg")
+ background-repeat: no-repeat
+ background-position: center center
+ position: absolute
+ right: 25px
+ top: 50%
+ transform: translateY(-50%)
+
+// Image / Video nach Header
+
+.wp-block-image.overlap-image
+    width: 100%
+    margin: auto
+    position: relative
+    z-index: 99
+    transform: translateY(-100px)
+    margin-bottom: -200px
+
+    img
+        display: block
+        margin: auto
+        width: 100%
+        max-width: 1340px
+
+.secondary a
+    position: relative
+    background-color: transparent
+    padding: 0
+
+.secondary a:after
+    content: ""
+    width: 150px
+    height: 15px
+    background: url("/app/plugins/custom-scripts54/src/assets/icons/arrow-small.svg")
+    background-repeat: no-repeat
+    display: block
+    position: absolute
+    right: -165px
+    top: 50%
+    transform: translateY(-50%)
