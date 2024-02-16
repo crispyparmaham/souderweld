@@ -39,6 +39,9 @@ h1, h2, h3, h4, h5, h6
         font: $text-font
         color: $text
 
+    &.heading
+        font-size: $t-xxl
+        line-height: 1
 a
     color: $primary
     font-weight: $text-fontweight-bold
@@ -47,7 +50,7 @@ a
     text-transform: uppercase
     font-weight: 800
     .last-word
-        color: $beige-80
+        color: $secondary
         display: table
 
 .inner-max-width
@@ -128,3 +131,22 @@ a.wp-element-button
     right: -165px
     top: 50%
     transform: translateY(-50%)
+
+
+.button-cta
+    display: inline-block
+    background: var(--blue-violet-gradient)
+    padding: 12px 24px
+    margin-top: 1.5rem
+    text-transform: uppercase
+    color: $text
+
+    &::after
+        content: ">"
+        margin-left: 1rem
+        color: $primary
+    
+    &:hover
+        background: var(--violet-blue-gradient) 
+        transition: all .2s ease-in-out
+

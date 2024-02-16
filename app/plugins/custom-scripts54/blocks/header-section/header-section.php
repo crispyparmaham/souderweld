@@ -35,18 +35,18 @@ $image = get_field( 'site-image' );
 ?>
 
 <div <?php echo $anchor; ?>class="<?php echo esc_attr( $class_name ); ?>">
-<div class="inner-max-width">
-<div class="text-wrapper">
-<h1 class="heading hmax title"><?php echo esc_html( $heading ); ?></h1>
-<p class="text"><?php echo esc_html( $text ); ?></p>
-<a href="<?php echo esc_html( $cta ); ?>"><?php echo $ctaText ?></a>
-</div>
-<div class="image">
-<?php if($image) : ?>
-<img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
-<?php else : ?>
-<img src="/app/uploads/2023/06/fallback-image.png" alt="Souderweld - die ganze Welt des Schweissens" />
-<?php endif; ?>
-</div>
-</div>
+    <div class="inner-max-width">
+        <div class="text-wrapper">
+            <h1 class="heading hmax title"><?php echo esc_html( $heading ); ?></h1>
+            <p class="text"><?php echo esc_html( $text ); ?></p>
+            <a class="button-cta" href="<?php echo esc_html( $cta ); ?>"><?php echo $ctaText ?></a>
+        </div>
+        <div class="image">
+            <?php if($image) : ?>
+                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+            <?php else : ?>
+                <img src="/app/uploads/2023/06/fallback-image.png" alt="Souderweld - die ganze Welt des Schweissens" />
+            <?php endif; ?>
+        </div>
+    </div>
 </div>
