@@ -1,7 +1,10 @@
 .wp-block-columns.fake-grid-wrapper
-    display: flex
-    flex-wrap: wrap
-    gap: 2em
+    width: 100%
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr))
+    grid-template-rows: 400px 400px
+    // flex-wrap: wrap !important
+    gap: 1rem
     margin-bottom: 2em
 
     &.last-element
@@ -10,7 +13,6 @@
     .wp-block-column
         display: flex
         padding: 0.5em
-        width: 100%
         gap: unset
 
         .wp-block-group
@@ -19,6 +21,8 @@
             align-items: stretch
             justify-content: stretch
             height: 100%
+            border-radius: 5px
+            overflow: hidden
 
             .wp-block-group__inner-container
                 display: flex
@@ -33,6 +37,8 @@
     width: 100%
     display: flex
     gap: .5em
+    border-radius: 5px
+    overflow: hidden    
 
     .teammitglied
         display: flex
@@ -84,7 +90,7 @@
             display: flex
             padding: 1.5em 1.5em
             align-items: flex-start
-            background-image: var(--violet-blue-gradient)
+            background-image: var(--dark-gradient-vertical)
             justify-content: space-between
             letter-spacing: 1px
 
@@ -112,6 +118,8 @@
 
                 &:hover
                     cursor: pointer
+                    background: $ultraDark
+                    transition: all .2s ease-in-out
 
 .gallery-wrapper
     display: none

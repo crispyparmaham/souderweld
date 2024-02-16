@@ -7,6 +7,9 @@
 
 // @import './utils/spacings', './utils/colors', './utils/displays', './utils/flex'
 
+html, body
+    font-family: $text-font !important
+
 
 figure.wp-block-image
     margin: 0 !important
@@ -65,8 +68,8 @@ a
     max-width: 1340px
 
 .wp-block-group
-    padding: 1.5rem
-    background: var(--blue-violet-gradient)
+    padding: 4rem 2rem
+    background: var(--dark-gradient-vertical)
 
 .has-semitransparent-blue-to-violet-gradient-background
     background: linear-gradient(90deg, rgba(130, 203, 230, .4) 0, rgba(124, 128, 159, .4) 100%)
@@ -153,6 +156,7 @@ a.wp-element-button
         color: $primary
     
     &:hover
-        background: var(--violet-blue-gradient) 
+        cursor: pointer
+        background: $ultraDark
         transition: all .2s ease-in-out
 
