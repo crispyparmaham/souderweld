@@ -7,17 +7,35 @@
         width: 100%
         height: 100%
         margin-bottom: 100px
+        padding-right: 290px
 
         &-slide
-            text-align: center
             font-size: 18px
-            background: var(--blue-violet-gradient)
+            background: var(--dark-gradient-vertical)
             display: flex
-            justify-content: center
-            align-items: center
+            justify-content: flex-start
+            align-items: flex-start
+            position: relative
+            min-height: 500px
+            padding: 4rem 3rem
+
+            &:first-of-type
+                margin-left: 2rem
 
         &-slide img
             display: block
             width: 100%
             height: 100%
             object-fit: cover
+
+    .bg-number
+        font-size: 250px
+        font-weight: $heading-fontweight
+        color: var(--secondary)
+        position: absolute
+        bottom: 0
+        right: 0
+        z-index: -1
+        opacity: .15
+        line-height: 0.7
+        

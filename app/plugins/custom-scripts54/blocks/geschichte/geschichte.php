@@ -42,8 +42,9 @@ $text = get_sub_field( 'text' ) ?: 'Hier könnte Ihr Text stehen';
 ?>
 
 <div class="swiper-slide">
-<h1 class="heading hmax title"><?php echo esc_html( $heading ); ?></h1>
-<p class="text"><?php echo esc_html( $text ); ?></p>
+    <h3 class=""><?php echo esc_html( $heading ); ?></h3>
+    <p class="text"><?php echo esc_html( $text ); ?></p>
+    <div class="bg-number"><?php echo substr(esc_html( $heading ),-2); ?></div>
 </div>
 <?php endwhile; ?>
 </div>
