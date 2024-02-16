@@ -95,6 +95,23 @@ a.wp-element-button
     font-size: 1.4rem
     text-transform: uppercase
     letter-spacing: 2px
+    background: none
+    padding-left: 0
+
+    &:hover
+        text-decoration: underline
+
+    &::before
+        // content: ">"
+        margin-right: 1rem
+        // color: $primary
+        content: ""
+        width: 180px
+        height: 15px
+        transform: translateY(20%)
+        background: url("/app/plugins/custom-scripts54/src/assets/icons/arrow-long.svg")
+        background-repeat: no-repeat
+        display: inline-block
 
 /** a.wp-element-button:after
  content: ""
@@ -124,22 +141,22 @@ a.wp-element-button
         width: 100%
         max-width: 1340px
 
-.secondary a
-    position: relative
-    background-color: transparent
-    padding: 0
+// .secondary a
+//     position: relative
+//     background-color: transparent
+//     padding: 0
 
-.secondary a:after
-    content: ""
-    width: 150px
-    height: 15px
-    background: url("/app/plugins/custom-scripts54/src/assets/icons/arrow-small.svg")
-    background-repeat: no-repeat
-    display: block
-    position: absolute
-    right: -165px
-    top: 50%
-    transform: translateY(-50%)
+// .secondary a:after
+//     content: ""
+//     width: 150px
+//     height: 15px
+//     background: url("/app/plugins/custom-scripts54/src/assets/icons/arrow-small.svg")
+//     background-repeat: no-repeat
+//     display: block
+//     position: absolute
+//     right: -165px
+//     top: 50%
+//     transform: translateY(-50%)
 
 
 .button-cta
@@ -149,14 +166,25 @@ a.wp-element-button
     margin-top: 1.5rem
     text-transform: uppercase
     color: $text
+    position: relative
 
     &::after
-        content: ">"
+        // content: ">"
         margin-left: 1rem
-        color: $primary
+        // color: $primary
+        content: ""
+        width: 20px
+        height: 15px
+        transform: translateY(20%)
+        background: url("/app/plugins/custom-scripts54/src/assets/icons/arrow-small.svg")
+        background-repeat: no-repeat
+        display: inline-block
+        // position: absolute
+        // right: -165px
+        // top: 50%
+        // transform: translateY(-50%)
     
     &:hover
         cursor: pointer
         background: $ultraDark
         transition: all .2s ease-in-out
-
