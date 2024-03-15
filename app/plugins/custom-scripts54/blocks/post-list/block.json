@@ -2,9 +2,8 @@
     "name": "beitragsliste",
     "title": "Beitragsliste",
     "description": "Alle Beiträge eines Custom Post Types",
-    "style": ["file:./post-list.sass"],
     "category": "formatting",
-    "icon": "universal-access-alt",
+    "icon": "grid-view",
     "keywords": ["liste", "aufzählung", "links", "custom", "souderweld"],
     "acf": {
         "mode": "preview",

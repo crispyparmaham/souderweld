@@ -1,0 +1,168 @@
+#sub-menu-holder
+    width: 60%
+    height: calc(100vh - 100px)
+    overflow: scroll
+
+#sub-menu 
+    padding: 0 150px 30px 30px
+
+    ul
+        list-style-type: none !important
+        padding-inline-start: 0px
+
+    li.menu-item
+        display: flex
+        align-items: center
+        width: 100%
+        justify-content: space-between
+        padding: 10px 20px
+
+        &:hover
+            background: $primary-40
+
+        a
+            max-width: 70%
+            margin-bottom: 10px
+            
+            .description
+                color: #fff
+                font-weight: 400
+
+#sub-menu-holder
+    transition: right .3s ease
+
+    &.open
+        right: 0
+        top: 100px
+
+
+/* MAIN MENU */
+
+#main-nav
+    position: relative 
+    ul
+        padding-inline-start: 0px
+        display: flex
+        margin-block-start: 0
+        margin-block-end: 0
+        position: relative
+
+        li
+            padding: 25px
+            min-height: 100px
+            display: flex
+            align-items: center
+            justify-content: center
+
+        a
+            color: white
+
+        &:hover
+            cursor: pointer
+
+.menu-inner
+    display: flex
+
+li.menu-item-has-children
+    list-style: none
+
+li.menu-item-has-children > a 
+    text-transform: uppercase
+    font-size: 1.5rem
+    font-weight: 200
+
+li.menu-item-has-children:hover > a
+    border-bottom: 3px solid color(3)
+
+
+
+/* SUB-MENU */
+
+.sub-menu-wrapper
+    flex-direction: row
+    align-items: flex-end
+    background: #121d22
+    display: none
+    position: absolute
+    top: 100%
+    border-top: 1px solid white
+    right: 0
+    min-width: calc(100vw - 100px)
+    min-height: 400px
+    height: 100%
+    width: 100%
+
+    .sub-menu
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        height: 100%
+        justify-content: space-evenly
+
+        li
+            display: flex
+            flex-direction: column
+            padding: 10px
+
+        li > a
+            color: white
+            font-size: 1.5rem
+            font-weight: 300
+            position: relative
+            display: flex
+            align-items: center
+            gap: 10px
+
+        li svg
+            transform: translateX(0%)
+            transition: all .3s ease-out
+
+        .sub-menu-image-wrapper
+            display: none
+
+.sub-menu-image-wrapper
+    display: flex
+    width: 33%
+    height: 100%
+
+    img.sub-menu-image
+        width: 100%
+        display: block
+        object-fit: cover
+
+/* OVERLAY */
+
+.overlay
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: rgba(0, 0, 0, 0.8)
+    opacity: 0
+    visibility: hidden
+    z-index: 98
+    transition: all .3s ease
+
+.show
+    opacity: 1
+    visibility: visible
+
+/* HOVER */
+
+.menu-inner li:hover .sub-menu-wrapper
+    display: flex
+
+li.menu-item-has-children > a:hover .overlay
+    opacity: 1
+    visibility: hidden
+
+.sub-menu li:hover .sub-menu-image
+    opacity: 1
+
+.sub-menu li.active .sub-menu-image
+    opacity: 1
+
+.sub-menu li:hover svg
+    opacity: 1
+    transform: translateX(150%)

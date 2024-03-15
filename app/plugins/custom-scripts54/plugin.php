@@ -88,6 +88,14 @@ function custom_enqueue_files()
     );
 
     wp_enqueue_script(
+        'menu-js',
+        plugin_dir_url(__FILE__) . 'src/script/menu.js',
+        array(),
+        '1.0.1',
+        true
+    );
+
+    wp_enqueue_script(
         'main-js',
         plugin_dir_url(__FILE__) . 'dist/js/main.bundle.js',
         array('gsap-main', 'gsap-scrolltrigger', 'gsap-scrollto'),
@@ -256,15 +264,12 @@ function register_blocks()
     register_block_type(__DIR__ . '/blocks/header-section');
     register_block_type(__DIR__ . '/blocks/mitarbeiter');
     register_block_type(__DIR__ . '/blocks/geschichte');
+    register_block_type(__DIR__ . '/blocks/heading-text-wrap');
+    register_block_type(__DIR__ . '/blocks/button-cta');
+	register_block_type(__DIR__ . '/blocks/wissen');
+    register_block_type(__DIR__ . '/blocks/jobs');
 }
 
-add_filter('allowed_http_origins', 'add_allowed_origins');
-
-function add_allowed_origins($origins)
-{
-    $origins[] = 'https://www.yourdomain.com';
-    return $origins;
-}
 
 // Add custom image sizes for responsive design
 add_theme_support('post-thumbnails');

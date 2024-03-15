@@ -3,8 +3,6 @@
     "title": "Mitarbeiter",
     "description": "Füge einen oder mehrere Mitarbeiter in dein Layout ein",
     "script": "block-qb-daterange",
-    "style": ["file:./mitarbeiter.sass"],
-    "editorStyle": "file:./mitarbeiter-backend.sass",
     "category": "formatting",
     "icon": "universal-access-alt",
     "keywords": ["liste", "mitarbeiter", "grid", "aufzählung", "custom", "souderweld"],

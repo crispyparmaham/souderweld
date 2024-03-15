@@ -7,7 +7,6 @@
     "selectors": {
         "root": ".geschichte-block"
     },
-    "style": ["file:./geschichte.sass"],
     "category": "formatting",
     "icon": "grid-view",
     "keywords": ["header", "anfang", "section", "custom", "souderweld", "geschichte", "zeitstrahl"],

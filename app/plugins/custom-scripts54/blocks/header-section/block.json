@@ -2,7 +2,6 @@
     "name": "header-section",
     "title": "Header Section",
     "description": "Text und Bild für den Seiteneinstieg",
-    "style": ["file:./header-section.sass"],
     "category": "formatting",
     "icon": "grid-view",
     "keywords": ["header", "anfang", "section", "custom", "souderweld"],

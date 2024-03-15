@@ -1,0 +1,14 @@
+{
+    "name": "wissen",
+    "title": "Wissen",
+    "description": "Füge das Layout des Wissenleikons ein",
+    "script": "block-qb-daterange",
+    "category": "formatting",
+    "icon": "universal-access-alt",
+    "keywords": ["liste", "wissen", "grid", "aufzählung", "custom", "souderweld"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "./wissen.php"
+    },
+    "align": "full"
+}

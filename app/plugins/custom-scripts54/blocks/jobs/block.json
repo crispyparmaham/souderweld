@@ -1,0 +1,14 @@
+{
+    "name": "jobs",
+    "title": "Jobs",
+    "description": "Füge das Layout für deine Stellenanzeigen ein",
+    "script": "block-qb-daterange",
+    "category": "formatting",
+    "icon": "universal-access-alt",
+    "keywords": ["liste", "jobs", "grid", "aufzählung", "custom", "souderweld"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "./jobs.php"
+    },
+    "align": "full"
+}

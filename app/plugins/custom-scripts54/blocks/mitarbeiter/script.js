@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    console.log('Das Mitarbeiterscript lädt');
-
     let galleries = document.querySelectorAll('.lightgallery');
 
     for (let gallery of galleries) {
@@ -11,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
             subHtmlSelectorRelative: true,
             licenseKey: 'F6EU6-2F2Q2-UYKX3-VGVVE',
         });
-        //console.log(gallery);
     }
 
     // Finde alle Buttons mit der Klasse 'button-certificate'
@@ -19,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Füge jedem Button den Klick-Handler hinzu
     for (let button of buttons) {
-        button.addEventListener('click', function(event) {
+        button.addEventListener('click', function (event) {
             event.preventDefault();
             let galleryName = button.getAttribute('data-gallery');
             let activeGallery = document.querySelector('.' + galleryName);

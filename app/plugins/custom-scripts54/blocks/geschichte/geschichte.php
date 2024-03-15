@@ -18,7 +18,7 @@ $anchor = 'id="' . esc_attr( $block['anchor'] ) . '" ';
 }
 
 // Create class attribute allowing for custom "className" and "align" values.
-$class_name = 'geschichte-block';
+$class_name = 'geschichte-container';
 if ( ! empty( $block['className'] ) ) {
 $class_name .= ' ' . $block['className'];
 }
@@ -34,7 +34,7 @@ $class_name .= ' align' . $block['align'];
 <?php
 $event = 'event';
 if (have_rows($event)) : ?>
-<div class="swiper geschichteSwiper" id="geschichteSwiper">
+<div class="swiper geschichte-swiper" id="geschichteSwiper">
 <div class="swiper-wrapper"><?php 
 while(have_rows($event)) : the_row();
 $heading = get_sub_field( 'date' ) ?: 'Hier könnte dein Datum stehen';

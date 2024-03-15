@@ -1,0 +1,16 @@
+{
+    "name": "button-cta",
+    "title": "Button CTA",
+    "description": "Primärer CTA Button",
+    "selectors": {
+        "root": ".button-cta"
+    },
+    "category": "formatting",
+    "icon": "grid-view",
+    "keywords": ["header", "section", "heading", "souderweld"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "./button-cta.php"
+    },
+    "align": "full"
+}

@@ -1,0 +1,16 @@
+{
+    "name": "heading-text-wrap",
+    "title": "Überschrift + Text",
+    "description": "Ein Block mit Überschrift und kurzem Text",
+    "selectors": {
+        "root": ".heading-text-block"
+    },
+    "category": "formatting",
+    "icon": "grid-view",
+    "keywords": ["header", "section", "heading", "souderweld"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "./heading-text-wrap.php"
+    },
+    "align": "full"
+}

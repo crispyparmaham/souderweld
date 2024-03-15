@@ -1,46 +1,55 @@
 <?php
-/**
- * Testimonial Block Template.
- *
- * @param   array $block The block settings and attributes.
- * @param   string $content The block inner HTML (empty).
- * @param   bool $is_preview True during backend preview render.
- * @param   int $post_id The post ID the block is rendering content against.
- *          This is either the post ID currently being displayed inside a query loop,
- *          or the post ID of the post hosting this block.
- * @param   array $conheading The conheading provided to the block by the post or it's parent block.
- */
 
-global $posts;
+$anchor = '';
+if (!empty($block['anchor'])) {
+    $anchor = 'id="' . esc_attr($block['anchor']) . '" ';
+}
 
-// Load values and assign defaults.
+// Create class attribute allowing for custom "className" and "align" values.
+$class_name = 'post-list';
+if (!empty($block['className'])) {
+    $class_name .= ' ' . $block['className'];
+}
+if (!empty($block['align'])) {
+    $class_name .= ' align' . $block['align'];
+} ?>
 
-$args = array(
-    'post_type' => 'wissen', // Hier den Namen deines benutzerdefinierten Post-Typs einfügen
-    'numberposts' => 12, // Hier kannst du die Anzahl der Beiträge festlegen. -1 zeigt alle Beiträge an.
-    'orderby' => 'title', // Sortieren nach Titel
-    'order' => 'ASC', // Aufsteigende Sortierung
-);
+<div <?php echo $anchor; ?>class="<?php echo esc_attr($class_name); ?>">
 
-$posts = get_posts( $args ); ?>
 
-<div class="uppercase hsmall">Wissen A-Z</div>
+    <?php
 
-<?php 
-if ( $posts ) :
-    foreach ( $posts as $post ) :
-        // Hier kannst du auf die Daten jedes Beitrags zugreifen
-        $post_title = $post->post_title;
-        $post_content = $post->post_content;
-        $permalink = $post->permalink; 
+    $chosen_post = get_field('auswahl');
+    if ($chosen_post) :
+
+        $countHash = 0;
+
+        foreach ($chosen_post as $id) :
+
+            $image = get_field('bild', $id);
+            $title = get_the_title($id);
+            $description = get_field('beschreibung', $id);
+            $excerpt = wp_trim_words($description, 20);
+            $link = get_the_permalink($id);
+
     ?>
-    <div class="menu-list">
-    <a href="<?php echo $permalink ?>"><?php echo $post_title ?></a>
-    </div>
-<?php 
-endforeach;
-endif;
-?>
-<div class="read-on">
-<a href="/mehr">alle Themen anzeigen</a>
+
+            <div class="post-item-box">
+                <?php if ($image) : ?>
+                    <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+                <?php endif;  ?>
+                <div class="post-content-wrap">
+                    <h4 class="post-heading h-s"><?php echo $title; ?></h4>
+                    <span class="post-content"><?php echo $excerpt; ?></span>
+                </div>  
+                <a class="button secondary arrow" href="<?php echo $link; ?>"><svg viewBox="0 0 73.953 11.156">
+  <path id="noun-arrow-5574219-FFFFFF" d="M315.891,395.817a.8.8,0,0,0-.176-.87l-4.787-4.787a.8.8,0,0,0-1.125,1.125l3.423,3.423H242.8a.8.8,0,1,0,0,1.6h70.439l-3.423,3.423a.8.8,0,0,0,0,1.125.784.784,0,0,0,.567.231.817.817,0,0,0,.566-.231l4.787-4.787a.763.763,0,0,0,.176-.263Z" transform="translate(-241.997 -389.926)" fill="#82cbe6"></path>
+</svg>Mehr erfahren
+</a>
+            </div>
+
+        <?php
+            $countHash++;
+        endforeach; ?>
+    <?php endif; ?>
 </div>

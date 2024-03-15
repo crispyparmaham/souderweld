@@ -1,190 +1,34 @@
-@import './var.sass'
-@import './fontend-sass/variables-layout'
-@import '../../blocks/post-list/post-list.sass'
-@import '../../blocks/header-section/header-section.sass'
-@import '../../blocks/mitarbeiter/mitarbeiter.sass'
-@import '../../blocks/geschichte/geschichte.sass'
 
-// @import './utils/spacings', './utils/colors', './utils/displays', './utils/flex'
+@import './var'
+
+@import './header/main'
+@import './menu/main'
+@import './slider/main'
+@import './post/main'
+@import './jobs/main'
+@import './utils/main'
+
+
+//BACKEND
+@import './backend/main'
+
+
+//FRONTEND
+@import './frontend/main'
+
+
+
+:root
+    --headerHeight: 100px
+
 
 html, body
-    font-family: $text-font !important
+    color: $text !important
+    line-height: 2 !important
 
-
-figure.wp-block-image
-    margin: 0 !important
-    margin-block-start: 0em
-    margin-block-end: 0em
-    margin-inline-start: 0px
-    margin-inline-end: 0px
-
-    img
-        width: 100%
-        max-height: 80vh
-        object-fit: cover
-
-.wp-block-columns
-    gap: 5em
-    margin-bottom: 100px
-
-p
-    font-family: $text-font
-    color: $text
-    font-weight: 400
-
-h1, h2, h3, h4, h5, h6
-    font: $text-font
-    color: $text
-    line-height: 1.25
-    margin-bottom: 1.25rem !important
-    text-transform: uppercase
-
-    &.wp-block-heading
-        font: $text-font
-        color: $text
-
-    &.heading
-        font-size: $t-xxxl
-        line-height: 1
-        
-h1
-    &.wp-block-heading, &.heading
-        color: $primary-heading
-    
-a
-    color: $primary
-    font-weight: $text-fontweight-bold
-
-.hmax
-    text-transform: uppercase
-    font-weight: 800
-    .last-word
-        color: $secondary
-        display: table
 
 .inner-max-width
-    margin: auto
     width: 100%
-    max-width: 1340px
-
-.wp-block-group
-    padding: 4rem 2rem
-    background: var(--dark-gradient-vertical)
-
-.has-semitransparent-blue-to-violet-gradient-background
-    background: linear-gradient(90deg, rgba(130, 203, 230, .4) 0, rgba(124, 128, 159, .4) 100%)
-
-.has-semitransparent-blue-to-violet-gradient-background
-    background: linear-gradient(90deg, rgba(130, 203, 230, .4) 0, rgba(124, 128, 159, .4) 100%)
-    padding: 30px
-
-    &.wp-element-button
-        padding: 10px 55px 10px 25px
-        position: relative
-
-.has-semitransparent-violet-to-blue-gradient-background
-    background: linear-gradient(90deg, rgba(124, 128, 159, .4) 0, rgba(130, 203, 230, .4) 100%)
-    padding: 30px
-
-    &.wp-element-button
-        padding: 10px 55px 10px 25px
-        position: relative
-
-a.wp-element-button
-    color: white
-    font-size: 1.4rem
-    text-transform: uppercase
-    letter-spacing: 2px
-    background: none
-    padding-left: 0
-
-    &:hover
-        text-decoration: underline
-
-    &::before
-        // content: ">"
-        margin-right: 1rem
-        // color: $primary
-        content: ""
-        width: 180px
-        height: 15px
-        transform: translateY(20%)
-        background: url("/app/plugins/custom-scripts54/src/assets/icons/arrow-long.svg")
-        background-repeat: no-repeat
-        display: inline-block
-
-/** a.wp-element-button:after
- content: ""
- width: 15px
- height: 15px
- background: url("/app/uploads/2023/06/arrow-small-1.svg")
- background-repeat: no-repeat
- background-position: center center
- position: absolute
- right: 25px
- top: 50%
- transform: translateY(-50%)
-
-// Image / Video nach Header
-
-.wp-block-image.overlap-image
-    width: 100%
-    margin: auto
-    position: relative
-    z-index: 99
-    transform: translateY(-100px)
-    margin-bottom: -200px
-
-    img
-        display: block
-        margin: auto
-        width: 100%
-        max-width: 1340px
-
-// .secondary a
-//     position: relative
-//     background-color: transparent
-//     padding: 0
-
-// .secondary a:after
-//     content: ""
-//     width: 150px
-//     height: 15px
-//     background: url("/app/plugins/custom-scripts54/src/assets/icons/arrow-small.svg")
-//     background-repeat: no-repeat
-//     display: block
-//     position: absolute
-//     right: -165px
-//     top: 50%
-//     transform: translateY(-50%)
-
-
-.button-cta
-    display: inline-block
-    background: var(--blue-violet-gradient)
-    padding: 12px 24px
-    margin-top: 1.5rem
-    text-transform: uppercase
-    color: $text
-    position: relative
-
-    &::after
-        // content: ">"
-        margin-left: 1rem
-        // color: $primary
-        content: ""
-        width: 20px
-        height: 15px
-        transform: translateY(20%)
-        background: url("/app/plugins/custom-scripts54/src/assets/icons/arrow-small.svg")
-        background-repeat: no-repeat
-        display: inline-block
-        // position: absolute
-        // right: -165px
-        // top: 50%
-        // transform: translateY(-50%)
-    
-    &:hover
-        cursor: pointer
-        background: $ultraDark
-        transition: all .2s ease-in-out
+    max-width: 1360px
+    margin: 0 auto
+    padding: 0 20px

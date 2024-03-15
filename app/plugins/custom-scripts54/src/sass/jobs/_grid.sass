@@ -1,0 +1,38 @@
+.job-grid-main
+    width: 100%
+    display: grid
+    grid-template-columns: repeat(1, 100%)
+    gap: 20px
+    margin-top: 40px
+
+    .job-post-wrap
+        display: flex
+        justify-content: space-between
+        background: $primary-20
+        border-radius: $border-radius-medium
+        padding: 30px
+
+        &:hover
+            background: $primary-40
+            
+        .job-heading-wrap
+            display: flex
+            flex-direction: column
+
+            .h-s
+                font-size: 2.2rem
+
+            > span
+                text-transform: uppercase
+                letter-spacing: 2px
+                font-size: 14px
+                color: $text
+
+        .job-content-wrap
+            display: flex
+            flex-direction: column
+            width: 60%
+            color: $text
+
+            > span
+                margin-bottom: 20px
